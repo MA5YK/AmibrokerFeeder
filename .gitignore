@@ -11,3 +11,9 @@
 *.lai
 *.la
 *.a
+
+# VC++ - ignore list
+Debug
+Release
+ipch
+*.sdf
