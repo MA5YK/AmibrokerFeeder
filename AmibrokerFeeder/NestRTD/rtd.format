@@ -1,0 +1,8 @@
+# Copy to AmiBroker\Formats
+$FORMAT Ticker, Date_YMD, Time, Open, High, Low, Close, Volume, OpenInt
+$SKIPLINES 0
+$SEPARATOR ,
+$CONT 1
+$GROUP 255
+$AUTOADD 1
+$DEBUG 1

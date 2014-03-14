@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NestRTD", "NestRTD\NestRTD.vcxproj", "{FEDD8D47-810A-4EF4-86DD-FF5BD1358A72}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ABBackFill", "ABBackFill\ABBackFill.vcxproj", "{7C0A5381-E4DB-474F-88CE-606D50E1E41F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEDD8D47-810A-4EF4-86DD-FF5BD1358A72}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FEDD8D47-810A-4EF4-86DD-FF5BD1358A72}.Debug|Win32.Build.0 = Debug|Win32
+		{FEDD8D47-810A-4EF4-86DD-FF5BD1358A72}.Release|Win32.ActiveCfg = Release|Win32
+		{FEDD8D47-810A-4EF4-86DD-FF5BD1358A72}.Release|Win32.Build.0 = Release|Win32
+		{7C0A5381-E4DB-474F-88CE-606D50E1E41F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7C0A5381-E4DB-474F-88CE-606D50E1E41F}.Debug|Win32.Build.0 = Debug|Win32
+		{7C0A5381-E4DB-474F-88CE-606D50E1E41F}.Release|Win32.ActiveCfg = Release|Win32
+		{7C0A5381-E4DB-474F-88CE-606D50E1E41F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

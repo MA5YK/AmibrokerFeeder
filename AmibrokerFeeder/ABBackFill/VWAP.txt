@@ -1,0 +1,5 @@
+name=NIFTY_F1
+
+
+
+name=NIFTY

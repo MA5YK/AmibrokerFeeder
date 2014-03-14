@@ -1,0 +1,184 @@
+// Generated .IDL file (by the OLE/COM Object Viewer)
+// 
+// typelib filename: NestTrader.exe
+
+[
+  uuid(302DC8E2-FAA2-4E96-ACFE-07A3318DCBDD),
+  version(1.0),
+  helpstring("NESTClient 1.0 Type Library")
+]
+library NESTClientLib
+{
+    // TLib :     // TLib : OLE Automation : {00020430-0000-0000-C000-000000000046}
+    importlib("stdole2.tlb");
+
+    // Forward declare all types defined in this typelib
+    interface IScripRTD;
+    interface IRTDUpdateEvent;
+    dispinterface _INestBridgeEvents;
+    interface INestBridge;
+    interface IPlusapi;
+
+    [
+      uuid(831F7347-85AB-4F88-8252-CEC80930C7B0),
+      helpstring("ScripRTD Class")
+    ]
+    coclass ScripRTD {
+        [default] interface IScripRTD;
+    };
+
+    [
+      odl,
+      uuid(EC0E6191-DB51-11D3-8F3E-00C04F3651B8),
+      helpstring("IScripRTD Interface"),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface IScripRTD : IDispatch {
+        [id(0x0000000a)]
+        HRESULT ServerStart(
+                        [in] IRTDUpdateEvent* callback, 
+                        [out, retval] long* result);
+        [id(0x0000000b)]
+        HRESULT ConnectData(
+                        [in] long topicId, 
+                        [in] SAFEARRAY(VARIANT)* strings, 
+                        [in, out] VARIANT_BOOL* newValues, 
+                        [out, retval] VARIANT* values);
+        [id(0x0000000c)]
+        HRESULT RefreshData(
+                        [in, out] long* topicCount, 
+                        [out, retval] SAFEARRAY(VARIANT)* data);
+        [id(0x0000000d)]
+        HRESULT DisconnectData([in] long topicId);
+        [id(0x0000000e)]
+        HRESULT Heartbeat([out, retval] long* result);
+        [id(0x0000000f)]
+        HRESULT ServerTerminate();
+    };
+
+    [
+      odl,
+      uuid(A43788C1-D91B-11D3-8F39-00C04F3651B8),
+      dual,
+      oleautomation
+    ]
+    interface IRTDUpdateEvent : IDispatch {
+        [id(0x0000000a)]
+        HRESULT UpdateNotify();
+        [id(0x0000000b), propget]
+        HRESULT HeartbeatInterval([out, retval] long* value);
+        [id(0x0000000b), propput]
+        HRESULT HeartbeatInterval([in] long value);
+        [id(0x0000000c)]
+        HRESULT Disconnect();
+    };
+
+    [
+      uuid(5BFBF197-6FC4-4970-ACC7-494F252B390F),
+      helpstring("_INestBridgeEvents Interface")
+    ]
+    dispinterface _INestBridgeEvents {
+        properties:
+        methods:
+            [id(0x00000001), helpstring("method ErrorNotify")]
+            void ErrorNotify([in] BSTR bsError);
+            [id(0x00000002), helpstring("method LoggedinUserNotify")]
+            void LoggedinUserNotify(
+                            [in] long lLoggedinStatus, 
+                            [in] BSTR bsUserid);
+            [id(0x00000003), helpstring("method DialogInfoNotify")]
+            void DialogInfoNotify(
+                            [in] long lDialogEnum, 
+                            [in] BSTR bsParam1, 
+                            [in] BSTR bsParam2, 
+                            [in] BSTR bsParam3, 
+                            [in] BSTR bsParam4);
+    };
+
+    [
+      uuid(8604D219-2102-4863-8D22-FDB68D1491FF),
+      helpstring("NestBridge Class")
+    ]
+    coclass NestBridge {
+        [default] interface INestBridge;
+        [default, source] dispinterface _INestBridgeEvents;
+    };
+
+    [
+      odl,
+      uuid(DF90D3B6-A574-4E44-A71A-F1D6E6918E4C),
+      helpstring("INestBridge Interface"),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface INestBridge : IDispatch {
+        [id(0x00000001), helpstring("method AddToTabbedLog")]
+        HRESULT AddToTabbedLog([in] BSTR bstrText);
+        [id(0x00000002), helpstring("method GetLoggedinUser")]
+        HRESULT GetLoggedinUser();
+        [id(0x00000003), helpstring("method InvokeDialog")]
+        HRESULT InvokeDialog(
+                        [in] long lDialogEnum, 
+                        [in] BSTR bsParam1, 
+                        [in] BSTR bsParam2, 
+                        [in] BSTR bsParam3, 
+                        [in] BSTR bsParam4);
+        [id(0x00000004), helpstring("method GetDialogInfo")]
+        HRESULT GetDialogInfo([in] long lDialogEnum);
+    };
+
+    [
+      uuid(91741D4F-948B-46A0-A2CC-0B925C4F5E17),
+      helpstring("Plusapi Class")
+    ]
+    coclass Plusapi {
+        [default] interface IPlusapi;
+    };
+
+    [
+      odl,
+      uuid(5C07F918-033B-4B72-8B6A-F1DB173CE8B1),
+      helpstring("IPlusapi Interface"),
+      dual,
+      nonextensible,
+      oleautomation
+    ]
+    interface IPlusapi : IDispatch {
+        [id(0x00000001), helpstring("method PlaceOrder")]
+        HRESULT PlaceOrder(
+                        [in] BSTR bsTransType, 
+                        [in] BSTR bsUniqueRefNo, 
+                        [in] BSTR bsExchange, 
+                        [in] BSTR bsTradingSymbol, 
+                        [in] BSTR bsValidity, 
+                        [in] BSTR bsOrderType, 
+                        [in] long lQty, 
+                        [in] double dPrice, 
+                        [in] double dTriggerPrice, 
+                        [in] long lDiscQty, 
+                        [in] BSTR bsProductType, 
+                        [in] BSTR bsClientID);
+        [id(0x00000002), helpstring("method ModifyOrder")]
+        HRESULT ModifyOrder(
+                        [in] BSTR bsOrderRefNo, 
+                        [in] BSTR bsValidity, 
+                        [in] BSTR bsOrderType, 
+                        [in] long lQty, 
+                        [in] double dPrice, 
+                        [in] double dTriggerPrice, 
+                        [in] long lDiscQty);
+        [id(0x00000003), helpstring("method CancelOrder")]
+        HRESULT CancelOrder([in] BSTR bsOrderRefNum);
+        [id(0x00000004), helpstring("method SetObjectName")]
+        HRESULT SetObjectName([in] BSTR bsObjectName);
+        [id(0x00000005), helpstring("method GetOrderStatus")]
+        HRESULT GetOrderStatus(
+                        [in] BSTR bsOrderRefNo, 
+                        [out] BSTR* bsStatus, 
+                        [out] long* lFillQty, 
+                        [out] long* lFillPrice);
+    };
+};
