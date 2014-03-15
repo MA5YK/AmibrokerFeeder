@@ -8,28 +8,26 @@
 class MiscUtil{
 
 public:
-	static void			printVariant( const VARIANT &var );
+    static void            printVariant( const VARIANT &var );
+    
+    static long    long    getLong  ( const VARIANT &var );
+    static double          getDouble( const VARIANT &var );
+    static std::string     getString( const VARIANT &var );
 
-	static bool			isDouble ( const VARIANT &var );
+    static std::string     getINIString( const char * key, const char *app_name="NestRTD" );
+    static int             getINIInt   ( const char * key, const char *app_name="NestRTD" );
 
-	static long	long	getLong  ( const VARIANT &var );
-	static double		getDouble( const VARIANT &var );
-	static std::string  getString( const VARIANT &var );
+    static void            splitString( const std::string & string,  char seperator, std::vector<std::string> &output );
 
-	static std::string  getINIString( const char * key, const char *app_name="NestRTD" );
-	static int			getINIInt   ( const char * key, const char *app_name="NestRTD"  );
+    static std::string     getTime( const char *format = "%H:%M:%S"  );    
 
-	static void			splitString( const std::string & string,  char seperator, std::vector<std::string> &output );
+    static void            trimString          ( std::string & string  );
+    static void            replaceTabsWithSpace( std::string & string  );
 
-	static std::string	getTime				( const char *format = "%H:%M:%S"  );	
+    static void            createDirectory( std::string & dir  );
 
-	static void			trimString			( std::string & string  );
-	static void			replaceTabsWithSpace( std::string & string  );
-
-	static void			createDirectory( std::string & dir  );
-
-	static void			printException( std::string msg );
-	 
+    static void            printException( std::string msg );
+     
 };
 
  

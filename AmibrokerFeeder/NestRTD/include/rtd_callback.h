@@ -13,28 +13,27 @@
 // IDispatchImpl provides the implementation of IDispatch
 
 class  DECLSPEC_UUID("d0096450-9dfd-11e3-a5e2-0800200c9a66") CallbackImpl :  
-	public CComObjectRootEx<CComMultiThreadModel>,																			
-	public CComCoClass<CallbackImpl, &__uuidof(CallbackImpl)>,  
-	public IDispatchImpl<IRTDUpdateEvent>{						
-	
+    public CComObjectRootEx<CComMultiThreadModel>,                                                                            
+    public CComCoClass<CallbackImpl, &__uuidof(CallbackImpl)>,  
+    public IDispatchImpl<IRTDUpdateEvent>{                        
+    
 public:
+    CallbackImpl();
 
-	// Implementation of IUnknown’s QueryInterface method.
-	BEGIN_COM_MAP(CallbackImpl)
-		COM_INTERFACE_ENTRY(IRTDUpdateEvent)
-		COM_INTERFACE_ENTRY(IDispatch)
-	END_COM_MAP()
+    // Implementation of IUnknown’s QueryInterface method.
+    BEGIN_COM_MAP(CallbackImpl)
+        COM_INTERFACE_ENTRY(IRTDUpdateEvent)
+        COM_INTERFACE_ENTRY(IDispatch)
+    END_COM_MAP()
 
-	HRESULT STDMETHODCALLTYPE  UpdateNotify();					// Callback
+    HRESULT STDMETHODCALLTYPE  UpdateNotify();                    // Callback
 
-	HRESULT STDMETHODCALLTYPE  Disconnect();
-	HRESULT STDMETHODCALLTYPE  get_HeartbeatInterval( long *value);
-	HRESULT STDMETHODCALLTYPE  put_HeartbeatInterval( long value );
+    HRESULT STDMETHODCALLTYPE  Disconnect();
+    HRESULT STDMETHODCALLTYPE  get_HeartbeatInterval( long *value);
+    HRESULT STDMETHODCALLTYPE  put_HeartbeatInterval( long value ); 
 
-	void setUpdateEvent( HANDLE	handle) { Event_RTD_Update = handle; }	 
-
-private: 	
-	HANDLE	Event_RTD_Update;
+private:
+    HANDLE    Event_RTD_Update;
 };
 
 

@@ -6,12 +6,12 @@
 class Settings{
 
 public:
-	std::string	csv_file_path;
-	std::string ab_db_path;
-	std::string vwap_file_path;
-	std::string data_table_file_path;
+    std::string   csv_file_path;
+    std::string   ab_db_path;
+    std::string   vwap_file_path;
+    std::string   data_table_file_path;
 
-	void loadSettings();
+    void loadSettings();
 
 };
 
