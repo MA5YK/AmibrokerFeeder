@@ -17,7 +17,7 @@
 Worker::Worker(){
                                                                            // _T()  - character set Neutral
     Event_RTD_Update = CreateEvent( NULL, false, TRUE, _T("RTD_UPDATE") ); // Manual Reset = false - Event resets to nonsignaled on 1 wait release                                                                
-    Event_StopNow    = CreateEvent( NULL, true,  FALSE, NULL );            // Initialize state to TRUE to read data once on start
+    Event_StopNow    = CreateEvent( NULL, true,  FALSE, NULL );                // Initialize state to TRUE to read data once on start
     Event_Stopped    = CreateEvent( NULL, true,  FALSE, NULL );
     AB_timer         = CreateWaitableTimer( NULL, false,NULL );
 
@@ -115,20 +115,14 @@ void Worker::connect(){
  * Wait for RTD Update event. On event, read new data and setup Current Bars
  */
 void Worker::poll(){
-    
-    // TODO check 
-    // Sleep(3000);                                                        // updatenotify gets skipped otherwise    
         
     while(1){    
-        if( WaitForSingleObject( Event_RTD_Update, INFINITE ) ==  WAIT_OBJECT_0 ){
-            
-            std::cout << "Event" << std::endl;
+        if( WaitForSingleObject( Event_RTD_Update, INFINITE ) ==  WAIT_OBJECT_0 ){                    
 
             std::map<long,CComVariant>*  data = rtd_client->readNewData() ;
             if( data != 0 && !data->empty() ){                             // Extra calls will give empty output most of the time
-                processRTDData( data );
-                std::cout << "has data" << std::endl;
-            }
+                processRTDData( data );                
+            }            
             delete data;            
         }
     }

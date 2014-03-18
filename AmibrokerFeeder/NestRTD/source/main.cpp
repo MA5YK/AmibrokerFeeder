@@ -7,7 +7,10 @@
 
 
 // TODO 
-    // No import when db changed? - Maybe AB settings    
+    // 1. Nest RTD Server stops updating Nifty Index after restarting Feeder few times. Excel also stops updated
+    // 2. If we disconnect on close, Nest sometimes starts giving 30 max scrip error 
+
+    // No import when db changed? - Maybe AB settings
     // Check for memory leaks in COM calls/callbacks  - esp SAFEARRAY/BSTR/VARIANT
     // Profile / valgrind like tool - very sleepy
         // https://vld.codeplex.com/

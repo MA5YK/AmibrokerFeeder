@@ -11,9 +11,7 @@ CallbackImpl::CallbackImpl(){
     }    
 }
 
-HRESULT STDMETHODCALLTYPE CallbackImpl::UpdateNotify(){
-
-    std::cout << "UpdateNotify" << std::endl;   
+HRESULT STDMETHODCALLTYPE CallbackImpl::UpdateNotify(){     
 
     if( Event_RTD_Update )        
         SetEvent ( Event_RTD_Update );                                    // Signal Update

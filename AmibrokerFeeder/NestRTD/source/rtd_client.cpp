@@ -102,11 +102,11 @@ void RTDClient::connectTopic(  long topic_id, const std::string &topic_1, const 
     }
 }
 
-void RTDClient::disconnectTopic( long topic_id) {
-    // Dont disconnect - Nest RTD Server starts giving max 30 subscription errors - maybe server buggy
-    // HRESULT hr = comObjectScripRTD->DisconnectData(topic_id);
-    connected_topics.erase( topic_id );
-}
+void RTDClient::disconnectTopic( long topic_id) {               // TODO
+    HRESULT hr = comObjectScripRTD->DisconnectData(topic_id);   // 1. Nest RTD Server starts giving max 30 subscription errors on multiple disconnects 
+    connected_topics.erase( topic_id );                             // maybe server buggy - dont disconnect ?
+}                                                               // 2. - Nifty Index rtd updates stop sometimes on Feeder restart
+                                                                    // check if caused by not disconnecting
 
 /**
  * Output = Map of topic id and field data  -  Map to be deleted by caller
