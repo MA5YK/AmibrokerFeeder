@@ -63,7 +63,8 @@
       <Command>cd $(OutputPath)
 del *.ini
 del *.txt
-del *.format</Command>
+del *.format
+del *.bat</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,12 +86,14 @@ del *.format</Command>
       <Command>cd $(OutputPath)
 del *.ini
 del *.txt
-del *.format</Command>
+del *.format
+del *.bat</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="rtd.format" />
     <None Include="settings.ini" />
+    <None Include="rtd.format" />
+    <None Include="NestRTDStartHighPriority.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="settings.ini">
@@ -99,6 +102,11 @@ del *.format</Command>
   </ItemGroup>
   <ItemGroup>
     <Content Include="rtd.format">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NestRTDStartHighPriority.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -1,3 +1,20 @@
+/**
+  Copyright (C) 2014  SpiffSpaceman
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>
+**/
+
 
 #include "rtd_client.h"
 #include "misc_util.h"
@@ -102,11 +119,11 @@ void RTDClient::connectTopic(  long topic_id, const std::string &topic_1, const 
     }
 }
 
-void RTDClient::disconnectTopic( long topic_id) {               // TODO
-    HRESULT hr = comObjectScripRTD->DisconnectData(topic_id);   // 1. Nest RTD Server starts giving max 30 subscription errors on multiple disconnects 
-    connected_topics.erase( topic_id );                             // maybe server buggy - dont disconnect ?
-}                                                               // 2. - Nifty Index rtd updates stop sometimes on Feeder restart
-                                                                    // check if caused by not disconnecting
+void RTDClient::disconnectTopic( long topic_id) {  
+    HRESULT hr = comObjectScripRTD->DisconnectData(topic_id);   
+    connected_topics.erase( topic_id );  
+}
+
 
 /**
  * Output = Map of topic id and field data  -  Map to be deleted by caller

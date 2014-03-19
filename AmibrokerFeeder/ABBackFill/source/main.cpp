@@ -10,7 +10,7 @@
 #include <iostream>
  
 // TODO
-    // No import when db changed?
+    // No import when db changed - maybe DB settings
     // Ignore if price 0 / out of market time ? - Nifty
     // Try to delete overlapping bars of same time in AB 
         // Quotations  - Retrieve / Remove ??

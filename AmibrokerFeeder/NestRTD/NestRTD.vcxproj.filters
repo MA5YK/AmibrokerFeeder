@@ -17,6 +17,7 @@
   <ItemGroup>
     <None Include="settings.ini" />
     <None Include="rtd.format" />
+    <None Include="NestRTDStartHighPriority.bat" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\rtd_callback.h">

@@ -6,12 +6,12 @@
 #include <iostream> 
 
 
-// TODO 
-    // 1. Nest RTD Server stops updating Nifty Index after restarting Feeder few times. Excel also stops updated
-    // 2. If we disconnect on close, Nest sometimes starts giving 30 max scrip error 
+// TODO
+    // 1. Nest RTD Server stops updating (in Excel too) Nifty Index after restarting Feeder few times.
+    // 2. Nest sometimes starts giving 30 max scrip error - Maybe caused by disconnects?
 
     // No import when db changed? - Maybe AB settings
-    // Check for memory leaks in COM calls/callbacks  - esp SAFEARRAY/BSTR/VARIANT
+    // Check for memory leaks in COM calls/callbacks - esp SAFEARRAY/BSTR/VARIANT/COM input/output
     // Profile / valgrind like tool - very sleepy
         // https://vld.codeplex.com/
         // https://stackoverflow.com/questions/2820223/visual-c-memory-leak-detection

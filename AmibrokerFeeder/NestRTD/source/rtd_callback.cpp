@@ -1,6 +1,5 @@
 
 #include "rtd_callback.h"
-#include <iostream>
  
 CallbackImpl::CallbackImpl(){
     

@@ -71,7 +71,8 @@
       <Command>cd $(OutputPath)
 del *.ini
 del *.txt
-del *.format</Command>
+del *.format
+del *.bat</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,7 +95,8 @@ del *.format</Command>
       <Command>cd $(OutputPath)
 del *.ini
 del *.txt
-del *.format</Command>
+del *.format
+del *.bat</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
