@@ -46,6 +46,7 @@
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(ProjectDir)\include;$(IncludePath)</IncludePath>
     <SourcePath>$(ProjectDir)\source;$(SourcePath)</SourcePath>
+    <OutDir>$(SolutionDir)$(Configuration)\NestRTD\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

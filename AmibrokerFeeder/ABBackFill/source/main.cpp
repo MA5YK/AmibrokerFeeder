@@ -10,7 +10,9 @@
 #include <iostream>
  
 // TODO
-    // No import when db changed - maybe DB settings
+    // ab_db_path - AB.import() does not work - no bars imported - works in NestRTD
+        // Does not work even if NestRTD is not running
+        // + what if db path is different vs NestRTD - will need to restore old database before exit.
     // Ignore if price 0 / out of market time ? - Nifty
     // Try to delete overlapping bars of same time in AB 
         // Quotations  - Retrieve / Remove ??
@@ -21,13 +23,13 @@ int _tmain(int argc, _TCHAR* argv[]){
         //LARGE_INTEGER start, finish, freq;
         //QueryPerformanceFrequency(&freq);
         //QueryPerformanceCounter(&start);
-
+        
         // Read settings.ini
         Settings settings;
-        settings.loadSettings();
-        
+        settings.loadSettings();        
+
         // Read Input and convert to CSV
-        Reader reader;        
+        Reader reader;     
         reader.parseVWAPToCsv     ( settings.vwap_file_path,        settings.csv_file_path ) ;
         reader.parseDataTableToCsv( settings.data_table_file_path,  settings.csv_file_path ) ;
         reader.closeOutput();
@@ -36,10 +38,10 @@ int _tmain(int argc, _TCHAR* argv[]){
         //std::cout << "CSV Creation Time:" << ((finish.QuadPart - start.QuadPart) / (double)freq.QuadPart) << std::endl;
 
         // send CSV to AB
-        Amibroker AB( settings.ab_db_path, settings.csv_file_path, "backfill.format");
-        AB.import();
+        Amibroker AB( settings.ab_db_path, settings.csv_file_path, "backfill.format"); 
+        AB.import();        
         AB.refreshAll();
-        AB.saveDB();
+        AB.saveDB();       
 
         std::cout << "Done" << std::endl ;
     }    

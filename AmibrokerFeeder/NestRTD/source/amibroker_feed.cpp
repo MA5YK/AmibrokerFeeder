@@ -111,6 +111,8 @@ void Amibroker::loadDB(){
         return;
     }
 
+    saveDB();                                                               // Save Current DB before loading another to ensure no data is lost
+
     VARIANT input = CComVariant(  CComBSTR( ab_db_path.c_str() )  );
 
     DISPPARAMS args;

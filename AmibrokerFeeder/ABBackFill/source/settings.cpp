@@ -6,7 +6,7 @@
 void Settings::loadSettings(){
 
     csv_file_path          = MiscUtil::getINIString("CSVFolderPath",             "ABBackFill");
-    ab_db_path             = MiscUtil::getINIString("AbDbPath",                  "ABBackFill");    
+   // ab_db_path             = MiscUtil::getINIString("AbDbPath",                  "ABBackFill");
     vwap_file_path         = MiscUtil::getINIString("VWAPBackFillInputFilePath", "ABBackFill");
     data_table_file_path   = MiscUtil::getINIString("DTBackFillInputFilePath",   "ABBackFill");
 

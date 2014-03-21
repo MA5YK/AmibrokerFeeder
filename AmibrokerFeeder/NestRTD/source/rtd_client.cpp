@@ -89,7 +89,11 @@ void RTDClient::startServer(){
 }
 
 void RTDClient::stopServer(){        
-    HRESULT hr = comObjectScripRTD->ServerTerminate();     
+    HRESULT hr = comObjectScripRTD->ServerTerminate();   
+
+    if( FAILED(hr) ){
+        std::cout << "stopServer Failed - " << " - hr - " << hr << std::endl;
+    }
 }
 
 /**
@@ -111,7 +115,7 @@ void RTDClient::connectTopic(  long topic_id, const std::string &topic_1, const 
     HRESULT hr = comObjectScripRTD->ConnectData(topic_id, topics.GetSafeArrayPtr(), &getNewValues, &output);
         
     if( FAILED(hr) ){
-        std::cout << "Topic Connection Failed - " << topic_1 << " | " << topic_2 << std::endl;    
+        std::cout << "Topic Connection Failed - " << topic_1 << " | " << topic_2 << " - hr - " << hr << std::endl;
     }
     else{
         std::cout << "Topic Connected - " << topic_id << " - " << topic_1 << " | " << topic_2 << std::endl;    
@@ -121,6 +125,9 @@ void RTDClient::connectTopic(  long topic_id, const std::string &topic_1, const 
 
 void RTDClient::disconnectTopic( long topic_id) {  
     HRESULT hr = comObjectScripRTD->DisconnectData(topic_id);   
+    if( FAILED(hr) ){
+        std::cout << "Topic Disconnection Failed - " << topic_id << " - hr - " << hr << std::endl;
+    }
     connected_topics.erase( topic_id );  
 }
 
@@ -135,7 +142,7 @@ std::map<long,CComVariant>* RTDClient::readNewData(){
     HRESULT     hr          = comObjectScripRTD->RefreshData( &topic_count, &data_sa );      
                                                                  // Pass Address of SAFEARRAY pointer so that we get pointer to 2D safearray
     if( FAILED(hr) ){                                            // Output Data has to be deleted by client
-        std::cout << "RefreshData COM failure." << std::endl;    
+        std::cout << "RefreshData COM failure." << " - hr - " << hr <<   std::endl;    
         return 0;
     }
     CComSafeArray<VARIANT>  data;                                // Passing data_sa as Constructor input will copy it, but we need to destroy it after use
