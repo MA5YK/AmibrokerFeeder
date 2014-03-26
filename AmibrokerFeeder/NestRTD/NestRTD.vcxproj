@@ -84,7 +84,7 @@ del *.bat</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>cd $(OutputPath)
+      <Command>cd $(OutputPath)\NestRTD\
 del *.ini
 del *.txt
 del *.format

@@ -1,23 +1,23 @@
 NestRTD
 =======
 
-**C++ RTD client for Nest. Feeds Amibroker.  
+**C++ RTD client for Nest/NOW. Feeds Amibroker.  
 Also included is a backfill tool to import VWAP statistics / Nest Plus Data table.**  
 
   * The tools are based on RTNOW utility by josh1. Read its instructions if needed ( Excel instructions irrelevant ).
     See [RTNOW](http://www.traderji.com/intraday/82733-free-realtime-data-now-nest-odin-trade-tiger-google-yahoo-amibroker-fcharts-ms.html)  
   * Advantages vs RTNOW  
-    - No need to use excel  
+    - No need to use excel. Uses less resources.
     - More accurate data as we pick up every callback from RTD  
-    - Uses less resources as its native binary  
   * Disadvantages  
-    - Only tested with NEST (ZT). May also work with NOW ( change RTDServerProgID value to Now.ScripRTD )  
+    - Only tested with NEST (ZT). NOW also reported to work with feeder.
     - No GUI. Create one if you can and share under GPLv3. Only need to setup some files and run exe anyway  
 
 #### Instructions        
     1. Setup Amibroker DB (intraday settings) and Nest as explained in josh1 RTNOW instructions.
     2. Copy rtd.format, backfill.format to AmiBroker\Formats.
-    3. Read and Setup settings.ini in NestRTD / ABBackFill	    
+    3. Read and Setup settings.ini in NestRTD / ABBackFill    
+         For Now make sure to change RTDServerProgID value to Now.ScripRTD along with scrip ids / field ids    
     4. Once setup is done, run the exe ( For Backfill, Fill the data in VWAP.txt/DataTable.txt first )
 
 #### Build

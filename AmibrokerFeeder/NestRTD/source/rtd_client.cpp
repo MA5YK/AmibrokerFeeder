@@ -30,8 +30,10 @@
  * Setup Com objects
  * Use comObjectScripRTD->QueryInterface( IID , LPVOID*  ) to get another interface of same classid    if needed
 **/
-RTDClient::RTDClient( const std::string &server_prog_id ){
-        
+RTDClient::RTDClient( const std::string &server_prog_id ) : is_NOW(false) {
+    
+    is_NOW  =  MiscUtil::isStringEqualIC( server_prog_id, "NOW.ScripRTD" ) ;
+
     USES_CONVERSION;
     LPOLESTR   progid  =  A2OLE( server_prog_id.c_str() );
     CLSID      classid;    
@@ -46,7 +48,7 @@ RTDClient::RTDClient( const std::string &server_prog_id ){
         throw( server_prog_id + " - IScripRTD object creation error. Nest down?"  );
     }
     
-    CComObject<CallbackImpl>::CreateInstance(&callback);                    // Create Callback Object    
+    CComObject<CallbackImpl>::CreateInstance(&callback);                    // Create Callback Object
 }
 
 /**
@@ -105,9 +107,18 @@ void RTDClient::connectTopic(  long topic_id, const std::string &topic_1, const 
         return;
     }
 
-    CComSafeArray<VARIANT> topics(2);    
-    topics[0] = CComBSTR(topic_1.c_str());
-    topics[1] = CComBSTR(topic_2.c_str());
+    int topics_count;  is_NOW ? topics_count=3 : topics_count=2;            // TODO Workaround - Pass MktWatch as Topic 1 for NOW
+    CComSafeArray<VARIANT> topics(topics_count);
+
+    if( is_NOW ){
+        topics[0] = CComBSTR( "MktWatch" );
+        topics[1] = CComBSTR(topic_1.c_str());
+        topics[2] = CComBSTR(topic_2.c_str());
+    }
+    else{
+        topics[0] = CComBSTR(topic_1.c_str());
+        topics[1] = CComBSTR(topic_2.c_str());
+    }
     
     VARIANT_BOOL getNewValues = VARIANT_TRUE;
     CComVariant  output;
@@ -115,7 +126,7 @@ void RTDClient::connectTopic(  long topic_id, const std::string &topic_1, const 
     HRESULT hr = comObjectScripRTD->ConnectData(topic_id, topics.GetSafeArrayPtr(), &getNewValues, &output);
         
     if( FAILED(hr) ){
-        std::cout << "Topic Connection Failed - " << topic_1 << " | " << topic_2 << " - hr - " << hr << std::endl;
+        std::cout << "Topic Connection Failed - " << topic_1 << " | " << topic_2 << " - hr - " << hr << " - " << is_NOW << std::endl;
     }
     else{
         std::cout << "Topic Connected - " << topic_id << " - " << topic_1 << " | " << topic_2 << std::endl;    

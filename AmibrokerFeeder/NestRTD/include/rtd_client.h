@@ -26,7 +26,9 @@ private:
     IScripRTD                    *comObjectScripRTD;      // NEST RTD COM object - Nest.ScripRTD for Interface IScripRTD
     CComObject<CallbackImpl>     *callback;               // Callback Object - Implementation of IRTDUpdateEvent
     std::set<long>                connected_topics;
-    
+
+    bool                          is_NOW;                 // Pass MktWatch as Topic 1 for NOW
+
     RTDClient( const RTDClient& );                        // Disable copy
     RTDClient operator=(const RTDClient& );     
 };

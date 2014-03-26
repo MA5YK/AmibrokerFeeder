@@ -2,9 +2,11 @@
 
 #include <windows.h> 
 #include <atlconv.h>
+
 #include <iostream> 
 #include <sstream>  
 #include <fstream>
+#include <algorithm>
 #include <ctime>
 
 
@@ -156,5 +158,11 @@ void MiscUtil::printException( std::string msg ){
     }    
 }
 
+// Compare strings ignoring case
+bool MiscUtil::isStringEqualIC(std::string str1 , std::string str2 ){
+    std::transform(str1.begin(), str1.end(), str1.begin(), ::tolower);
+    std::transform(str2.begin(), str2.end(), str2.begin(), ::tolower);
 
+    return str1 == str2 ;
+}
 

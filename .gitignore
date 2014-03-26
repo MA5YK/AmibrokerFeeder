@@ -22,3 +22,6 @@ ipch
 NestTrader_h.h
 NestTrader_i.c
 
+#logs
+errorLog.txt
+

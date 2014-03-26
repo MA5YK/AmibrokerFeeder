@@ -137,7 +137,7 @@ void Worker::poll(){
         if( WaitForSingleObject( Event_RTD_Update, INFINITE ) ==  WAIT_OBJECT_0 ){                    
 
             std::map<long,CComVariant>*  data = rtd_client->readNewData() ;
-            if( data != 0 && !data->empty() ){                             // Extra calls will give empty output most of the time
+            if( data != 0 && !data->empty() ){
                 processRTDData( data );                
             }            
             delete data;            
