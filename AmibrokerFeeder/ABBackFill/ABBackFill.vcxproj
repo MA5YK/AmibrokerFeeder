@@ -43,7 +43,7 @@
     <SourcePath>$(ProjectDir)\source;$(SolutionDir)\NestRTD\source;$(SourcePath)</SourcePath>
     <ExtensionsToDeleteOnClean>
     </ExtensionsToDeleteOnClean>
-    <OutDir>$(SolutionDir)$(Configuration)\ABBackFill</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\ABBackFill\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

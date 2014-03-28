@@ -7,10 +7,10 @@ Also included is a backfill tool to import VWAP statistics / Nest Plus Data tabl
   * The tools are based on RTNOW utility by josh1. Read its instructions if needed ( Excel instructions irrelevant ).
     See [RTNOW](http://www.traderji.com/intraday/82733-free-realtime-data-now-nest-odin-trade-tiger-google-yahoo-amibroker-fcharts-ms.html)  
   * Advantages vs RTNOW  
-    - No need to use excel. Uses less resources.
+    - No need to use excel. Uses less resources  
     - More accurate data as we pick up every callback from RTD  
   * Disadvantages  
-    - Only tested with NEST (ZT). NOW also reported to work with feeder.
+    - Only tested with NEST (ZT). RTD Feeder for NOW also reported to work but backfill does not  
     - No GUI. Create one if you can and share under GPLv3. Only need to setup some files and run exe anyway  
 
 #### Instructions        

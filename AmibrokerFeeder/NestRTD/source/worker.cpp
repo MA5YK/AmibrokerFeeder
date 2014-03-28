@@ -95,7 +95,7 @@ Worker::ScripState::ScripState() :
 {}
 
 void Worker::ScripState::reset(){
-    ltp = 0; vol_today = 0; oi =0; bar_high = 0; bar_low = std::numeric_limits<double>::infinity(); bar_open = 0;    
+    ltp = 0; vol_today = 0; oi =0; bar_high = 0; bar_low = std::numeric_limits<double>::infinity(); bar_open = 0; last_bar_ltt="";
 }
 
 bool Worker::ScripState::operator==(const ScripState& right) const{
@@ -234,14 +234,19 @@ void Worker::amibrokerPoller(){
                 ((*_current) == (*_prev))                                  // 3. We got new data from readNewData() but its duplicate
               )    continue;                                               //    NEST RTD sends all fields even if unconnected field (ex B/A) changes    
                                     
-            if( !_current->ltt.empty() &&  _current->ltt == _prev->ltt  ){ // IF LTT of current is same as previous, but data is different                
-                continue;                                                  // skip to avoid overwrite with same timestamp
+            std::string bar_ltt;                                           // Use ltt if present else use current time  
+            !_current->ltt.empty()  ? bar_ltt = _current->ltt : bar_ltt = MiscUtil::getTime( settings.time_format.c_str() );
+            
+            if(  bar_ltt == _prev->last_bar_ltt  ){                        // IF LTT is same as previous LTT of this scrip ( but data is different )
+                continue;                                                  //   skip to avoid overwrite with same timestamp
             }                                                              // This can happen if we have more than 1 update in a second 
-                                                                           // and poller took data in between 
+                                                                           //   and poller took data in between 
             new_bars.push_back( ScripBar() );
             ScripBar* bar = &new_bars.back();
-                                                                           // Use ltt if present else use current time                                                                                
-            !_current->ltt.empty()  ? bar->ltt    = _current->ltt : bar->ltt    = MiscUtil::getTime( settings.time_format.c_str() );                        
+
+            bar->ltt                = bar_ltt;
+             _current->last_bar_ltt = bar_ltt;
+
             _prev->vol_today !=0    ? bar->volume = bar_volume    : bar->volume = 0;
                                                                            // Ignore First bar volume as prev bar is not set.
             bar->ticker     = settings.scrips_array[i].ticker;             // Otherwise, we get today's volume = First Bar volume

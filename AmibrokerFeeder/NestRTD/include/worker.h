@@ -59,7 +59,8 @@ private:
     };
     struct ScripState {                                                        
         double       ltp;                                                    
-        std::string  ltt;        
+        std::string  ltt;                                                   // ltt can be empty for index scrips
+        std::string  last_bar_ltt;                                          // last_bar_ltt will be always set with last sent bar's ltt
         long long    vol_today;
         long long    oi;
                 
