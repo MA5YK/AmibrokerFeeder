@@ -10,15 +10,15 @@ Also included is a backfill tool to import VWAP statistics / Nest Plus Data tabl
     - No need to use excel. Uses less resources  
     - More accurate data as we pick up every callback from RTD  
   * Disadvantages  
-    - Only tested with NEST (ZT). RTD Feeder for NOW also reported to work but backfill does not  
+    - Only for NEST / NOW   
     - No GUI. Create one if you can and share under GPLv3. Only need to setup some files and run exe anyway  
 
 #### Instructions        
-    1. Setup Amibroker DB (intraday settings) and Nest as explained in josh1 RTNOW instructions.
-    2. Copy rtd.format, backfill.format to AmiBroker\Formats.
+    1. Setup Amibroker DB (intraday settings) and Nest as explained in josh1 RTNOW instructions  
+    2. Copy rtd.format, backfill.format to AmiBroker\Formats  
     3. Read and Setup settings.ini in NestRTD / ABBackFill    
-         For Now make sure to change RTDServerProgID value to Now.ScripRTD along with scrip ids / field ids    
-    4. Once setup is done, run the exe ( For Backfill, Fill the data in VWAP.txt/DataTable.txt first )
+         For 'Now' make sure to change RTDServerProgID value to Now.ScripRTD along with scrip ids / field ids    
+    4. Once setup is done, run the exe ( For Backfill, Fill the data in VWAP.txt/DataTable.txt first )  
 
 #### Build
     Build using VC++ 2010 Express. ATL headers and libs taken from Windows Driver kit.

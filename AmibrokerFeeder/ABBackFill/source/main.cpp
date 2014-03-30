@@ -8,8 +8,6 @@
 #include <iostream>
  
 // TODO
-    // Backfill on NOW fails
-
     // Delete overlapping bars of same time in AB using AB stock-quotations - example of delete in DeleteDateRange.js
     // backfill only missing data - use a threshold. If no of quotes in a minute less than threshold, delete quotes and import from input data
     // Also try to get data from NEST using AHK/autoit com interface
