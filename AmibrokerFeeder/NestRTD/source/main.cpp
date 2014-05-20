@@ -3,20 +3,22 @@
 #include "stdafx.h"
 #include "misc_util.h"
 
-#include <iostream> 
+#include <iostream>
 
 
 // TODO
-    // NOW - take topics from settings instead of hardcoding "MktWatch" based on server prog id
-        
+    // Option to filter based on start time and end time + today
     // 1. Nest RTD Server stops updating (in Excel too) Nifty Index after restarting Feeder few times.
     // 2. Nest sometimes starts giving 30 max scrip error - Maybe caused by disconnects?
-    
+    // NOW - take topics from settings instead of hardcoding "MktWatch" based on server prog id?
+    // Add option to input arg to override any setting	
+
+
     // Check for memory leaks in COM calls/callbacks - esp SAFEARRAY/BSTR/VARIANT/COM input/output
         // https://vld.codeplex.com/
         // https://stackoverflow.com/questions/2820223/visual-c-memory-leak-detection
     // Profile - very sleepy
-        
+
 
 
 // Workaround for crash on calling CComObject::CreateInstance
@@ -43,17 +45,17 @@ int _tmain(int argc, _TCHAR* argv[]){
     try{
         worker = new Worker;
         worker->connect();
-        worker->poll();    
+        worker->poll();
     }
     catch( const std::string msg ){
         MiscUtil::printException(msg);
     }
-    catch( const char *msg ){    
+    catch( const char *msg ){
         MiscUtil::printException(msg);
     }
 
     return 0;
-} 
+}
 
 
 

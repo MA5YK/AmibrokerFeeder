@@ -33,8 +33,8 @@
  */
 Worker::Worker(){
                                                                            // _T()  - character set Neutral
-    Event_RTD_Update = CreateEvent( NULL, false, TRUE, _T("RTD_UPDATE") ); // Manual Reset = false - Event resets to nonsignaled on 1 wait release                                                                
-    Event_StopNow    = CreateEvent( NULL, true,  FALSE, NULL );                // Initialize state to TRUE to read data once on start
+    Event_RTD_Update = CreateEvent( NULL, false, FALSE, _T("RTD_UPDATE") );// Manual Reset = false - Event resets to nonsignaled on 1 wait release
+    Event_StopNow    = CreateEvent( NULL, true,  FALSE, NULL );                // Initialize state to FALSE. Read data only after callback
     Event_Stopped    = CreateEvent( NULL, true,  FALSE, NULL );
     AB_timer         = CreateWaitableTimer( NULL, false,NULL );
 

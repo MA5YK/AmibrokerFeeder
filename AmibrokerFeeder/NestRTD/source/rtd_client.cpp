@@ -57,7 +57,7 @@ RTDClient::RTDClient( const std::string &server_prog_id ) : is_NOW(false) {
 RTDClient::~RTDClient(){
     try{
         for( auto i=connected_topics.begin(), j=connected_topics.end() ; i!=j ; i=connected_topics.begin() ){ 
-            disconnectTopic( *i );                                          // disconnect all connected topics
+            disconnectTopic( *i );                                          // disconnect all connected topics            
         }
         stopServer();
     }
@@ -135,10 +135,12 @@ void RTDClient::connectTopic(  long topic_id, const std::string &topic_1, const 
 }
 
 void RTDClient::disconnectTopic( long topic_id) {  
+    // TODO check - dont disconnect to avoid 30 scrip error
+    /**
     HRESULT hr = comObjectScripRTD->DisconnectData(topic_id);   
     if( FAILED(hr) ){
         std::cout << "Topic Disconnection Failed - " << topic_id << " - hr - " << hr << std::endl;
-    }
+    }**/
     connected_topics.erase( topic_id );  
 }
 

@@ -34,9 +34,12 @@ Reader::~Reader(){
 }
  
 
-void Reader::parseVWAPToCsv(  const std::string &vwap_file, const std::string &csv_file_path  ){
+bool Reader::parseVWAPToCsv(  const std::string &vwap_file, const std::string &csv_file_path  ){
         
-    setUpInputStream( vwap_file);
+    if( !setUpInputStream( vwap_file) ){
+        return false;
+    }
+
     if( !fout.is_open() ){                                                     // Dont reset - use single csv import
         setUpOutputStream( csv_file_path );
     }
@@ -81,14 +84,18 @@ void Reader::parseVWAPToCsv(  const std::string &vwap_file, const std::string &c
         // $FORMAT Ticker, Date_YMD, Time, Open, High, Low, Close, Volume
         fout << scrip_name << ',' << today_date << ',' << time << ',' << split[2] << ',' << split[3] << ',' << split[4] << ',' 
              << split[5]   << ',' << split[6]   << std::endl ;
-    }    
+    }   
+    return true;
 }
 
 
 // "NIFTY14MARFUT    17-02-2014 09:20:00    6078.7000    6081.2000    6078.5000    6080.9500    53350"
-void Reader::parseDataTableToCsv( const std::string &dt_file, const std::string &csv_file_path  ){
+bool Reader::parseDataTableToCsv( const std::string &dt_file, const std::string &csv_file_path  ){
         
-    setUpInputStream( dt_file);
+    if( !setUpInputStream( dt_file) ) {
+        return false;
+    }
+
     if( !fout.is_open() ){                                                     // Dont reset - use single csv import
         setUpOutputStream( csv_file_path );
     }
@@ -133,6 +140,8 @@ void Reader::parseDataTableToCsv( const std::string &dt_file, const std::string 
              << split[2] << ',' << split[3]        << ','           << split[4]      << ',' 
              << split[5] << ',' << split[6]        << ','           << split[7]      << std::endl ;
     }    
+
+    return true;
 }
 
 void Reader::closeOutput(){
@@ -141,14 +150,12 @@ void Reader::closeOutput(){
     }
 }
 
-void Reader::setUpInputStream(  const std::string &in_file  ){
+bool Reader::setUpInputStream(  const std::string &in_file  ){
     if( fin.is_open() ){
         fin.close();    
     }
     fin.open ( in_file );
-    if( !fin.is_open() ){
-        throw "Could not Read Backfill File - " + in_file;
-    }
+    return fin.is_open();
 }
 
 
